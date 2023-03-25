@@ -1,5 +1,6 @@
 import { Express } from 'express';
 import { auth } from 'express-openid-connect';
+import { appRoutes } from '../app.routes';
 
 const useAuth0 = (app: Express): void => {
     app.use(
@@ -11,9 +12,9 @@ const useAuth0 = (app: Express): void => {
             authRequired: false,
             auth0Logout: true,
             routes: {
-                logout: '/api/auth/logout',
-                login: '/api/auth/login',
-                callback: '/api/auth/callback',
+                logout: appRoutes.api.v1.auth.logout.url,
+                login: appRoutes.api.v1.auth.login.url,
+                callback: appRoutes.api.v1.auth.callback.url,
             },
         }),
     );
