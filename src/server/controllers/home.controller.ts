@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 const homeController = {
-    home: (req: Request, res: Response) => {
+    getHome: (req: Request, res: Response): void => {
         res.send('Express app home. You are ' + (req.oidc.isAuthenticated() ? 'logged in.': 'logged out.'));
     }
 };

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 const authController = {
-    register: (req: Request, res: Response) => {
+    getRegister: (req: Request, res: Response): void => {
         res.oidc.login({
             authorizationParams: {
                 screen_hint: 'signup',
