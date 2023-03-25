@@ -19,5 +19,4 @@ useAppRouting(app);
 // Bootstrapping
 app.listen(port, () => {
     console.log(`[INFO]: Express server is running at ${process.env.BASE_URL}`);
-    console.log(`${__dirname}/../environment/.env`);
 });
