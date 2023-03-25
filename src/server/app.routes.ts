@@ -15,16 +15,20 @@ const appRoutes = {
                     name: 'api.v1.auth.login',
                 },
                 logout: {
-                    url: '/api/auth/login',
+                    url: '/api/v1/auth/login',
                     name: 'api.v1.auth.logout',
                 },
                 register: {
-                    url: '/api/auth/register',
+                    url: '/api/v1/auth/register',
                     name: 'api.v1.auth.register',
                 },
-            }
+            },
+            profile: {
+                url: '/api/v1/profile',
+                name: 'api.v1.profile',
+            },
         },
-    }
+    },
 };
 
 export { appRoutes };
