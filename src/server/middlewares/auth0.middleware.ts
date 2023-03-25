@@ -1,4 +1,4 @@
-import { Express } from 'express';
+import { Express, Request, Response, NextFunction } from 'express';
 import { auth } from 'express-openid-connect';
 import { appRoutes } from '../app.routes';
 
@@ -18,6 +18,11 @@ const useAuth0 = (app: Express): void => {
             },
         }),
     );
+
+    app.use((req: Request, res: Response, next: NextFunction): void => {
+        res.locals.isAuthenticated = req.oidc.isAuthenticated();
+        next();
+    })
 };
 
 export { useAuth0 };
