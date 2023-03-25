@@ -5,8 +5,8 @@
     "main": "./src/app.js",
     "scripts": {
         "build": "npx tsc",
-        "start": "node dist/app.js",
-        "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/app.js\""
+        "start": "node dist/server/app.js",
+        "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/server/app.js\""
     },
     "author": "hsh3nl",
     "license": "MIT",
