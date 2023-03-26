@@ -1,6 +1,7 @@
-import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
+import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
+    declare id: CreationOptional<number>
     declare first_name: string;
     declare last_name: string;
     declare email: string;
@@ -9,6 +10,11 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
 
 const initUserModel = (sequelize: Sequelize): void => {
     User.init({
+        id: {
+            type: DataTypes.INTEGER.UNSIGNED,
+            autoIncrement: true,
+            primaryKey: true
+        },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -20,6 +26,7 @@ const initUserModel = (sequelize: Sequelize): void => {
         email: {
             type: DataTypes.STRING(350),
             allowNull: false,
+            unique: true,
         },
         profile_picture: {
             type: DataTypes.TEXT,

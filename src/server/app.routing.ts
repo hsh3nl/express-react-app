@@ -1,4 +1,4 @@
-import { Express } from 'express';
+import { Express, NextFunction } from 'express';
 
 // routes
 import { appRoutes } from './app.routes';
@@ -7,6 +7,9 @@ import { appRoutes } from './app.routes';
 import { homeController } from './controllers/home.controller';
 import { authController } from './controllers/auth.controller';
 import { profileController } from './controllers/profile.controller';
+
+// guards
+import { authGuard } from './middlewares/auth0.middleware';
 
 // Routing
 const useAppRouting = (app: Express): void => {
@@ -17,7 +20,8 @@ const useAppRouting = (app: Express): void => {
     app.get(appRoutes.api.v1.auth.register.url, authController.getRegister);
 
     // Profile
-    app.get(appRoutes.api.v1.profile.url, profileController.getProfile);
+    app.get(appRoutes.api.v1.profile.url, authGuard, profileController.getProfile);
+    app.post(appRoutes.api.v1.profile.url, authGuard, profileController.updateProfile);
 }
 
 export { useAppRouting };

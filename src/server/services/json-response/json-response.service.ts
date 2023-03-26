@@ -5,7 +5,7 @@ import { StandardResponse } from './interfaces/standard-response.interface';
 import { SuccessResponse } from './interfaces/success-response.interface';
 
 const jsonResponseService = {
-    returnError: (statusCode: number, message: string, res: Response): void => {
+    returnResponse: (statusCode: number, message: string, res: Response): void => {
         const errorResponse: StandardResponse = {
             statusCode,
             serverTime: new Date().getTime(),

@@ -8,6 +8,9 @@ import { appRoutes } from '../app.routes';
 // models
 import { User } from '../database/models/user.model';
 
+// services
+import { jsonResponseService } from '../services/json-response/json-response.service';
+
 interface Auth0UserInfo {
     sub: string;
     given_name: string;
@@ -22,9 +25,9 @@ interface Auth0UserInfo {
 }
 
 const useAuth0 = (app: Express): void => {
-    const createUserIfNew = async (response: AxiosResponse<Auth0UserInfo> | AxiosError): Promise<void> => {
-        if (response.status === 200 && 'data' in response) {
-            const userProfile: Auth0UserInfo = response.data;
+    const createUserIfNew = async (getUserInfoResponse: AxiosResponse<Auth0UserInfo> | AxiosError): Promise<void> => {
+        if (getUserInfoResponse.status === 200 && 'data' in getUserInfoResponse) {
+            const userProfile: Auth0UserInfo = getUserInfoResponse.data;
             const [user, created] = await User.findOrCreate({
                 where: {
                     email: userProfile.email.toLowerCase(),
@@ -46,12 +49,12 @@ const useAuth0 = (app: Express): void => {
 
     const afterCallback = async (req: Request, res: Response, session: Session, decodedState: Record<string, any>): Promise<Session> => {
         if (session.token_type && session.access_token) {
-            const response = await axios.get(process.env.AUTH0_ISSUER_BASE_URL + 'userinfo', {
+            const getUserInfoResponse = await axios.get(process.env.AUTH0_ISSUER_BASE_URL + 'userinfo', {
                 headers: {
                     Authorization: `${session.token_type} ${session.access_token}`,
                 },
             });
-            createUserIfNew(response);
+            createUserIfNew(getUserInfoResponse);
         }
         return session;
     };
@@ -76,8 +79,7 @@ const useAuth0 = (app: Express): void => {
             },
             authorizationParams: {
                 scope: 'openid profile email',
-                audience:
-                    process.env.AUTH0_ISSUER_BASE_URL + 'userinfo',
+                audience: process.env.AUTH0_ISSUER_BASE_URL + 'userinfo',
                 response_type: 'code',
             },
             afterCallback,
@@ -90,4 +92,24 @@ const useAuth0 = (app: Express): void => {
     });
 };
 
-export { useAuth0 };
+const authGuard = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    if (res.locals.isAuthenticated) {
+        // if (req.oidc.user) {
+        //     const thisUser = await User.findOne({
+        //         where: {
+        //             email: req.oidc.user.email,
+        //         },
+        //     });
+        //     if (thisUser) {
+        //         console.log('set cookie', thisUser?.id);
+        //         res.cookie('userId', thisUser?.id, { expires: new Date(Date.now() + 86400), httpOnly: true });
+        //     }
+        // }
+        next();
+        return;
+    }
+    res.clearCookie('userId');
+    jsonResponseService.returnResponse(401, 'Not authenticated.', res);
+};
+
+export { useAuth0, authGuard };

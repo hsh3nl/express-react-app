@@ -10,6 +10,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+app.use(express.json());
 
 // Database configuration
 configDb();
