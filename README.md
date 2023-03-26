@@ -47,4 +47,4 @@ export { profileController };
 app.get(appRoutes.api.v1.profile.url, profileController.getProfile);
 ```
 
-### 1, Go to the route to check that the endpoint works e.g. /api/v1/profile.
+### 1. Go to the route to check that the endpoint works e.g. /api/v1/profile.
