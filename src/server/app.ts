@@ -1,14 +1,18 @@
-import express, { Express } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import { useAppRouting } from './app.routing';
 import { useAuth0 } from './middlewares/auth0.middleware';
+import { configDb } from './database/database.configurator';
 
 // Configuration
-const app: Express = express();
+const app = express();
 const port = process.env.PORT || 8000;
 dotenv.config({ path: path.join(__dirname, '..', '..', '.env') });
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+
+// Database configuration
+configDb();
 
 // Middlewares
 useAuth0(app);
