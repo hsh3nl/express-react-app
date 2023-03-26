@@ -15,7 +15,7 @@ const appRoutes = {
                     name: 'api.v1.auth.login',
                 },
                 logout: {
-                    url: '/api/v1/auth/login',
+                    url: '/api/v1/auth/logout',
                     name: 'api.v1.auth.logout',
                 },
                 register: {
