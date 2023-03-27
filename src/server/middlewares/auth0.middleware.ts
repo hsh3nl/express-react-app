@@ -94,20 +94,20 @@ const useAuth0 = (app: Express): void => {
 
 const authGuard = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     if (res.locals.isAuthenticated) {
-        // if (req.oidc.user) {
-        //     const thisUser = await User.findOne({
-        //         where: {
-        //             email: req.oidc.user.email,
-        //         },
-        //     });
-        //     if (thisUser) {
-        //         console.log('set cookie', thisUser?.id);
-        //         res.cookie('userId', thisUser?.id, { expires: new Date(Date.now() + 86400), httpOnly: true });
-        //     }
-        // }
+        if (req.oidc.user) {
+            const thisUser = await User.findOne({
+                where: {
+                    email: req.oidc.user.email,
+                },
+            });
+            if (thisUser) {
+                res.cookie('userId', thisUser?.id);
+            }
+        }
         next();
         return;
     }
+    res.clearCookie('isLoggedIn');
     res.clearCookie('userId');
     jsonResponseService.returnResponse(401, 'Not authenticated.', res);
 };
