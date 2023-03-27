@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App/App';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter as Router } from 'react-router-dom';
+
+// styles
+import './index.css';
+
+// compose
+import ComponentCompose from './shared/composes/ComponentCompose/ComponentCompose';
+
+// providers
+import NetworkProvider from './shared/provider-context-hook/network/Network.provider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <App />
+        <ComponentCompose components={[Router, NetworkProvider]}>
+            <App />
+        </ComponentCompose>
     </React.StrictMode>,
 );
 
