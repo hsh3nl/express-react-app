@@ -1,0 +1,36 @@
+{
+    "action": {
+        "home": "Home",
+        "profile": "Profile"
+    },
+    "title": {
+        "home": "Welcome home!",
+        "profile": "My Profile"
+    },
+    "keyword": {
+        "general": {
+            "language": {
+                "en": "English",
+                "bm": "Malay",
+                "jp": "Japanese",
+                "zh": "Chinese"
+            }
+        },
+        "home": {
+            "change-language": "Change language"
+        },
+        "profile": {
+            "first-name": "First name",
+            "last-name": "Last name",
+            "email": "Email"
+        }
+    },
+    "form": {},
+    "message": {
+        "profile": {
+            "rest-api": {
+                "get-profile-failed-with-message": "Failed to retrieve user profile. {{ errorMsg }}"
+            }
+        }
+    }
+}

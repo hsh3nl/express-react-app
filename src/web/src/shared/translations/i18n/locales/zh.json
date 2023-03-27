@@ -1,0 +1,36 @@
+{
+    "action": {
+        "home": "主页",
+        "profile": "个人资料"
+    },
+    "title": {
+        "home": "欢迎回家！",
+        "profile": "我的个人资料"
+    },
+    "keyword": {
+        "general": {
+            "language": {
+                "en": "英语",
+                "bm": "马来语",
+                "jp": "日语",
+                "zh": "中文"
+            }
+        },
+        "home": {
+            "change-language": "更改语言"
+        },
+        "profile": {
+            "first-name": "名",
+            "last-name": "姓",
+            "email": "电子邮件"
+        }
+    },
+    "form": {},
+    "message": {
+        "profile": {
+            "rest-api": {
+                "get-profile-failed-with-message": "无法检索用户资料。{{ errorMsg }}"
+            }
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
+import i18n from '../shared/translations/i18n/config';
+import Cookies from 'js-cookie';
 
 // guards
 import AuthGuard from '../shared/guards/Auth/Auth.guard';
@@ -13,8 +15,20 @@ import ProfileProvider from '../shared/provider-context-hook/profile/Profile.pro
 // components
 import HomeComponent from './Home/Home.component';
 import ProfileComponent from './Profile/Profile.component';
+import { useEffect } from 'react';
 
 function App(): JSX.Element {
+    const setLocaleIfChanged = () => {
+        const setLocale = Cookies.get('locale');
+        if (setLocale && i18n.languages.includes(setLocale)) {
+            i18n.changeLanguage(setLocale);
+        }
+    }
+
+    useEffect(() => {
+        setLocaleIfChanged();
+    }, []);
+
     return (
         <Routes>
             <Route path="" element={<HomeComponent />} />
