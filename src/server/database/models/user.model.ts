@@ -38,7 +38,7 @@ const initUserModel = (sequelize: Sequelize): void => {
         modelName: 'User'
     });
 
-    User.sync({ alter: true });
+    User.sync();
 }
 
 export { initUserModel, User };
