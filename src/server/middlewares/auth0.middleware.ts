@@ -100,6 +100,9 @@ const useAuth0 = (app: Express): void => {
                     res.cookie('userId', thisUser?.id);
                 }
             }
+        } else {
+            res.clearCookie('isLoggedIn');
+            res.clearCookie('userId');        
         }
         next();
     });
@@ -110,8 +113,6 @@ const authGuard = async (req: Request, res: Response, next: NextFunction): Promi
         next();
         return;
     }
-    res.clearCookie('isLoggedIn');
-    res.clearCookie('userId');
     jsonResponseService.returnResponse(401, 'Not authenticated.', res);
 };
 
