@@ -4,7 +4,9 @@
         "profile": "Profile",
         "edit-profile": "Edit Profile",
         "go-home": "Return to Home",
-        "submit": "Submit"
+        "submit": "Submit",
+        "login": "Login",
+        "logout": "Logout"
     },
     "title": {
         "home": "Welcome home!",

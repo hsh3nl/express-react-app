@@ -4,7 +4,9 @@
         "profile": "プロフィール",
         "edit-profile": "プロフィールの編集",
         "go-home": "ホームに戻る",
-        "submit": "送信"
+        "submit": "提出する",
+        "login": "ログイン",
+        "logout": "ログアウト"
     },
     "title": {
         "home": "ようこそ！",

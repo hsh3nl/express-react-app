@@ -4,7 +4,9 @@
         "profile": "Profil",
         "edit-profile": "Edit Profil",
         "go-home": "Kembali ke Laman Utama",
-        "submit": "Hantar"
+        "submit": "Hantar",
+        "login": "Log masuk",
+        "logout": "Log keluar"
     },
     "title": {
         "home": "Selamat Datang di Rumah!",

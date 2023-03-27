@@ -4,7 +4,9 @@
         "profile": "个人资料",
         "edit-profile": "编辑个人资料",
         "go-home": "返回首页",
-        "submit": "提交"
+        "submit": "提交",
+        "login": "登录",
+        "logout": "登出"
     },
     "title": {
         "home": "欢迎回家！",
