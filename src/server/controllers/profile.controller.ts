@@ -8,14 +8,20 @@ import { User } from '../database/models/user.model';
 
 const profileController = {
     getProfile: async (req: Request, res: Response): Promise<void> => {
-        const email = req.oidc.user?.email ?? '';
-        if (!email) {
+        const userId = parseInt(req.cookies?.userId, 10);
+        if (!userId || userId < 1) {
             jsonResponseService.returnResponse(404, 'User not found.', res);
             return;
         }
 
-        const user = await User.findOne({ where: { email } });
+        const user = await User.findByPk(userId);
         if (!user) {
+            jsonResponseService.returnResponse(404, 'User not found.', res);
+            return;
+        }
+
+        const email = req.oidc.user?.email ?? '';
+        if (!email || email.toLowerCase() !== user.email) {
             jsonResponseService.returnResponse(404, 'User not found.', res);
             return;
         }

@@ -86,28 +86,31 @@ const useAuth0 = (app: Express): void => {
         }),
     );
 
-    app.use((req: Request, res: Response, next: NextFunction): void => {
+    app.use(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         res.locals.isAuthenticated = req.oidc.isAuthenticated();
+        if (res.locals.isAuthenticated) {
+            res.cookie('isLoggedIn', true);
+            if (!req.cookies.userId && req.oidc.user) {
+                const thisUser = await User.findOne({
+                    where: {
+                        email: req.oidc.user.email,
+                    },
+                });
+                if (thisUser) {
+                    res.cookie('userId', thisUser?.id);
+                }
+            }
+        }
         next();
     });
 };
 
 const authGuard = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     if (res.locals.isAuthenticated) {
-        // if (req.oidc.user) {
-        //     const thisUser = await User.findOne({
-        //         where: {
-        //             email: req.oidc.user.email,
-        //         },
-        //     });
-        //     if (thisUser) {
-        //         console.log('set cookie', thisUser?.id);
-        //         res.cookie('userId', thisUser?.id, { expires: new Date(Date.now() + 86400), httpOnly: true });
-        //     }
-        // }
         next();
         return;
     }
+    res.clearCookie('isLoggedIn');
     res.clearCookie('userId');
     jsonResponseService.returnResponse(401, 'Not authenticated.', res);
 };
