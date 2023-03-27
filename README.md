@@ -4,18 +4,22 @@
 ## 1. Install nodejs.
 
 ## 1. Install all dependencies with:
-`$ npm ci`
+`$ npm ci` at root and at src/web.
 
 ## 1. Create a copy of .env.sample and rename it to .env. Update the .env file as relevant to the environment.
 
 # Local development
 ## Start server with:
 `$ npm run dev`
+## Start frontend server with:
+`$ npm run start`
 
 # Production
 ## Building server dist files and starting the node express server
 `$ npm run build`
 `$ npm run start`
+## Build web files with:
+`$ npm run build` at src/web
 
 # Architecture and conventions for server development
 ## Setting up a new API controller
@@ -47,4 +51,4 @@ export { profileController };
 app.get(appRoutes.api.v1.profile.url, profileController.getProfile);
 ```
 
-### 1. Go to the route to check that the endpoint works e.g. /api/v1/profile.
+### 1. Test that the endpoint works e.g. /api/v1/profile.
