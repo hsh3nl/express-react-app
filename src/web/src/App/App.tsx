@@ -2,6 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import i18n from '../shared/translations/i18n/config';
 import Cookies from 'js-cookie';
+import { useEffect } from 'react';
 
 // guards
 import AuthGuard from '../shared/guards/Auth/Auth.guard';
@@ -15,7 +16,7 @@ import ProfileProvider from '../shared/provider-context-hook/profile/Profile.pro
 // components
 import HomeComponent from './Home/Home.component';
 import ProfileComponent from './Profile/Profile.component';
-import { useEffect } from 'react';
+import EditProfileComponent from './Profile/EditProfile/EditProfile.component';
 
 function App(): JSX.Element {
     const setLocaleIfChanged = () => {
@@ -42,6 +43,7 @@ function App(): JSX.Element {
                 }
             >
                 <Route path="profile" element={<ProfileComponent />} />
+                <Route path="profile/edit" element={<EditProfileComponent />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
