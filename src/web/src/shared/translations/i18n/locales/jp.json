@@ -1,11 +1,15 @@
 {
     "action": {
         "home": "ホーム",
-        "profile": "プロフィール"
+        "profile": "プロフィール",
+        "edit-profile": "プロフィールの編集",
+        "go-home": "ホームに戻る",
+        "submit": "送信"
     },
     "title": {
-        "home": "お帰りなさい！",
-        "profile": "マイプロフィール"
+        "home": "ようこそ！",
+        "profile": "マイプロフィール",
+        "edit-profile": "プロフィールの編集"
     },
     "keyword": {
         "general": {
@@ -25,11 +29,20 @@
             "email": "メールアドレス"
         }
     },
-    "form": {},
+    "form": {
+        "edit-profile": {
+            "first-name": "名",
+            "last-name": "姓",
+            "email": "メールアドレス"
+        }
+    },
     "message": {
         "profile": {
+            "profile-loading": "プロフィールを読み込んでいます...",
             "rest-api": {
-                "get-profile-failed-with-message": "ユーザープロフィールの取得に失敗しました。 {{ errorMsg }}"
+                "get-profile-failed-with-message": "ユーザープロフィールの取得に失敗しました。{{ errorMsg }}",
+                "update-profile-successful": "ユーザープロフィールが正常に更新されました。",
+                "update-profile-failed-with-message": "ユーザープロフィールの更新に失敗しました。{{ errorMsg }}"
             }
         }
     }
