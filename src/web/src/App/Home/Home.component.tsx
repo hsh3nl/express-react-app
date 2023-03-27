@@ -27,6 +27,11 @@ const HomeComponent = (): JSX.Element => {
                         <span>{t('action.profile')}</span>
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to="profile/edit">
+                        <span>{t('action.edit-profile')}</span>
+                    </NavLink>
+                </li>
             </ul>
             <div>
                 <h2>{t('keyword.home.change-language')}</h2>

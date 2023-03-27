@@ -5,6 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter as Router } from 'react-router-dom';
 import './shared/translations/i18n/config';
 
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 // styles
 import './index.css';
 

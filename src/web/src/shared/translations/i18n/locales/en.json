@@ -1,11 +1,15 @@
 {
     "action": {
         "home": "Home",
-        "profile": "Profile"
+        "profile": "Profile",
+        "edit-profile": "Edit Profile",
+        "go-home": "Return to Home",
+        "submit": "Submit"
     },
     "title": {
         "home": "Welcome home!",
-        "profile": "My Profile"
+        "profile": "My Profile",
+        "edit-profile": "Edit profile"
     },
     "keyword": {
         "general": {
@@ -25,11 +29,20 @@
             "email": "Email"
         }
     },
-    "form": {},
+    "form": {
+        "edit-profile": {
+            "first-name": "First name",
+            "last-name": "Last name",
+            "email": "Email"
+        }
+    },
     "message": {
         "profile": {
+            "profile-loading": "Loading profile...",
             "rest-api": {
-                "get-profile-failed-with-message": "Failed to retrieve user profile. {{ errorMsg }}"
+                "get-profile-failed-with-message": "Failed to retrieve user profile. {{ errorMsg }}",
+                "update-profile-successful": "User profile successfully updated.",
+                "update-profile-failed-with-message": "Failed to update user profile. {{ errorMsg }}"
             }
         }
     }

@@ -1,0 +1,41 @@
+.edit-profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #eaf9ff, #f9fdff);
+}
+
+.profile-box {
+    box-shadow: 0 0 10px 4px rgb(0 0 0 / 5%);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem 2rem;
+    background-color: white;
+    transform: translateY(-3rem);
+    width: 350px;
+    margin: 1rem;
+}
+
+.profile-box h1 {
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-gray);
+}
+
+.submit-btn {
+    margin-top: 0.5rem;
+}
+
+.back-btn {
+    width: 100%;
+}
