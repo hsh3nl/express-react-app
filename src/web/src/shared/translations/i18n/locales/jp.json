@@ -1,0 +1,36 @@
+{
+    "action": {
+        "home": "ホーム",
+        "profile": "プロフィール"
+    },
+    "title": {
+        "home": "お帰りなさい！",
+        "profile": "マイプロフィール"
+    },
+    "keyword": {
+        "general": {
+            "language": {
+                "en": "英語",
+                "bm": "マレー語",
+                "jp": "日本語",
+                "zh": "中国語"
+            }
+        },
+        "home": {
+            "change-language": "言語を変更"
+        },
+        "profile": {
+            "first-name": "名",
+            "last-name": "姓",
+            "email": "メールアドレス"
+        }
+    },
+    "form": {},
+    "message": {
+        "profile": {
+            "rest-api": {
+                "get-profile-failed-with-message": "ユーザープロフィールの取得に失敗しました。 {{ errorMsg }}"
+            }
+        }
+    }
+}

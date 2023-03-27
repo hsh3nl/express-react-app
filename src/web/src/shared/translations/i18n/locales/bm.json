@@ -1,0 +1,36 @@
+{
+    "action": {
+        "home": "Laman Utama",
+        "profile": "Profil"
+    },
+    "title": {
+        "home": "Selamat Datang ke Applikasi!",
+        "profile": "Profil Saya"
+    },
+    "keyword": {
+        "general": {
+            "language": {
+                "en": "Bahasa Inggeris",
+                "bm": "Bahasa Melayu",
+                "jp": "Bahasa Jepun",
+                "zh": "Bahasa Cina"
+            }
+        },
+        "home": {
+            "change-language": "Tukar bahasa"
+        },
+        "profile": {
+            "first-name": "Nama Pertama",
+            "last-name": "Nama Akhir",
+            "email": "Emel"
+        }
+    },
+    "form": {},
+    "message": {
+        "profile": {
+            "rest-api": {
+                "get-profile-failed-with-message": "Gagal untuk mendapatkan profil pengguna. {{ errorMsg }}"
+            }
+        }
+    }
+}
