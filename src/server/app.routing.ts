@@ -1,4 +1,5 @@
-import { Express } from 'express';
+import express, { Express } from 'express';
+import path from 'path';
 
 // routes
 import { appRoutes } from './app.routes';
@@ -18,6 +19,9 @@ const useAppRouting = (app: Express): void => {
     // Profile
     app.get(appRoutes.api.v1.profile.url, authGuard, profileController.getProfile);
     app.post(appRoutes.api.v1.profile.url, authGuard, profileController.updateProfile);
+
+    // Frontend react app
+    app.use(express.static(path.join(__dirname, '..', '..', 'dist', 'web')));
 }
 
 export { useAppRouting };
